@@ -1,0 +1,25 @@
+before_install:
+ - sudo mkdir /zeromq2-x
+ - git clone --depth 1 git://github.com/zeromq/zeromq2-x.git
+ - cd zeromq2-x
+ - ./autogen.sh
+ - ./configure --prefix /zeromq2-x
+ - make
+ - sudo make install
+ - cd ..
+ - sudo mkdir /zeromq3-x
+ - git clone --depth 1 git://github.com/zeromq/zeromq3-x.git
+ - cd zeromq3-x
+ - ./configure --prefix /zeromq3-x
+ - make
+ - sudo make install
+ - cd ..
+env:
+ - CXXFLAGS="-I/Users/mark_everitt/zmq2/include" LDFLAGS="-L/Users/mark_everitt/zmq2/lib"
+ - CXXFLAGS="-I/Users/mark_everitt/zmq3/include" LDFLAGS="-L/Users/mark_everitt/zmq3/lib"
+language: node_js
+node_js:
+ - "0.8"
+script:
+ - npm install
+ - npm test

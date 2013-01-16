@@ -17,6 +17,9 @@ before_install:
 env:
  - CXXFLAGS="-I/Users/mark_everitt/zmq2/include" LDFLAGS="-L/Users/mark_everitt/zmq2/lib"
  - CXXFLAGS="-I/Users/mark_everitt/zmq3/include" LDFLAGS="-L/Users/mark_everitt/zmq3/lib"
-script:
+language: node_js
+node_js:
+ - "0.8"
+before_script:
  - npm install
  - npm test
